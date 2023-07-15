@@ -1,5 +1,5 @@
 import React from 'react';
-import {Routes, Route, Link } from "react-router-dom";
+import {Routes, Route} from "react-router-dom";
 import { Layout, Typography, Space} from 'antd';
 
 import { HeartOutlined } from '@ant-design/icons';
@@ -31,9 +31,8 @@ const App = () => {
                         Made with <HeartOutlined /> by Raj Sinha <br />
                     </Typography.Title>
                     <Space>
-                        <Link to="/">Home</Link>
-                        <Link to="/exchanges">Exchanges</Link>
-                        <Link to="/news">News</Link>
+                        <a href='https://github.com/r-a-j-s-i-n-h-a' target='blank'>GitHub</a>
+                        <a href='https://www.linkedin.com/in/raj-sinha-a539bb223/' target='blank'>LinkedIn</a>
                     </Space>
                 </div>
             </div>
