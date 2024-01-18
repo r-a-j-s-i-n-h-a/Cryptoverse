@@ -9,17 +9,6 @@ const Exchanges = () => {
   const [buyOrders, setBuyOrders] = useState([]);
   const [sellOrders, setSellOrders] = useState([]);
 
-  // Fetch data for the selected trading pair
-  useEffect(() => {
-    // const fetchData = async () => {
-    //   const buyOrdersResponse = await fetchBuyOrders(selectedPair);
-    //   const sellOrdersResponse = await fetchSellOrders(selectedPair);
-    //   setBuyOrders(buyOrdersResponse);
-    //   setSellOrders(sellOrdersResponse);
-    // };
-    // fetchData();
-  }, [selectedPair]);
-
   const columns = [
     {
       title: 'Price',
@@ -34,9 +23,9 @@ const Exchanges = () => {
   ];
 
   return (
-    <div>
-      <Row gutter={1}>
-        <Col span={24}>
+    <div style={{ margin: '20px' }}>
+      <Row gutter={16}>
+        <Col span={24} style={{ marginBottom: '20px' }}>
           <Card title={`Order Book - ${selectedPair}`}>
             <div>
               <Select defaultValue='BTC/USD' style={{ width: '100%' }} onChange={(value) => setSelectedPair(value)}>
@@ -44,27 +33,25 @@ const Exchanges = () => {
                 {/* Add more trading pairs as needed */}
               </Select>
             </div>
-            <div >
-              <Row gutter={18} style={{ marginBottom: '10px' }}>
-                <Col span={12}>
-                  <Card title='Buy Orders' size='small'>
-                    <Table dataSource={buyOrders} columns={columns} pagination={false} size='small' />
-                  </Card>
-                </Col>
-                <Col span={12}>
-                  <Card title='Sell Orders' size='small'>
-                    <Table dataSource={sellOrders} columns={columns} pagination={false} size='small' />
-                  </Card>
-                </Col>
-              </Row>
-            </div>
+            <Row gutter={16} style={{ marginTop: '20px' }}>
+              <Col span={12}>
+                <Card title='Buy Orders' style={{ height: '300px', overflowY: 'auto' }} size='small'>
+                  <Table dataSource={buyOrders} columns={columns} pagination={false} size='small' />
+                </Card>
+              </Col>
+              <Col span={12}>
+                <Card title='Sell Orders' style={{ height: '300px', overflowY: 'auto' }} size='small'>
+                  <Table dataSource={sellOrders} columns={columns} pagination={false} size='small' />
+                </Card>
+              </Col>
+            </Row>
           </Card>
         </Col>
-        <Col span={60}>
-          <Card title='Trade Execution'>
-            <div style={{ marginBottom: '10px'}}>
-              <Input placeholder='Quantity' style={{ marginRight: '10px' }} />
-              <Input placeholder='Price' style={{ marginRight: '10px' }} />
+        <Col span={24} style={{ marginBottom: '20px' }}>
+          <Card title='Trade Execution' style={{ marginTop: '20px' }}>
+            <div style={{ marginBottom: '10px' }}>
+              <Input placeholder='Quantity' style={{ width: '80px', marginRight: '10px' }} />
+              <Input placeholder='Price' style={{ width: '80px', marginRight: '10px' }} />
               <Button type='primary'>Buy</Button>
               <Button type='danger' style={{ marginLeft: '10px' }}>
                 Sell
@@ -76,7 +63,6 @@ const Exchanges = () => {
           </Card>
         </Col>
       </Row>
-      {/* Additional components for trading history, user balances, etc. can be added here */}
     </div>
   );
 };
